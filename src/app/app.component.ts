@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
@@ -9,5 +10,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  //constructor(private http : HttpClient){}
+  /*getAllData(){
+    //this.http.get("http://localhost:3000/all") 
+  }*/
+
   title = 'papa-frontend';
 }
