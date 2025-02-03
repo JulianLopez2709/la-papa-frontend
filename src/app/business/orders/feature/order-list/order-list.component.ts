@@ -29,10 +29,11 @@ export class OrderListComponent implements OnInit {
 
   public foodList$ !: Observable<Food[]>
 
-  constructor(private service: OrderService, private socket : WebSocketService) { }
+  constructor(private service: OrderService) { }
 
   ngOnInit(): void {
     this.foodList$ = this.service.getAllData()
+    console.log(this.foodList$)
 
     /*his.service.getAllData().subscribe(
       (response) => {

@@ -2,24 +2,34 @@
     div {}
 </style>
 
-<div style="display: flex;">
-    <div style="">
-        @if(foodList$ | async; as resultObject){
-            <ul>
+<div style="display: flex; flex-direction: row; gap: 20px; max-width: 100%; height: 100%; ">
+    <!-- Tarjeta Card New: ocupa el espacio restante -->
+    <div style="background: #545454; flex: 1; border-radius: 20px; padding: 15px;">
+            @if(foodList$ | async; as resultObject){
                 @for (item of resultObject; track $index) {
-                    <li>
-                        <app-new-order-card [food]="item"></app-new-order-card>
-                    </li>
+                    @if($index < 2){
+                        <li style="margin-bottom: 20px; list-style-type: none; ">
+                            <app-new-order-card [food]="item"></app-new-order-card>
+                        </li>
+                    }
                 }
-            </ul>
-        }
+            }
 
-        @for (item of data; track $index) {
-            <app-new-order-card [food]="item"></app-new-order-card>
-        }
-        
+            @if(foodList$){
+                <p>No Hay asuntos que hacer</p>
+            }
     </div>
-    <div style="width: 800px; background: red;">
-        <p>list ordenes</p>
+
+    <!-- Tarjeta Card Day: ancho fijo -->
+    <div style="background: #545454; width: 280px; border-radius: 20px; padding: 7px;">
+            @if(foodList$ | async; as resultObject){
+                @for (item of resultObject; track $index) {
+                    @if($index < 2){
+                        <li style="margin-bottom: 10px; list-style-type: none; padding-left: 0;">
+                            <app-today-order-card [food]="item"></app-today-order-card>
+                        </li>
+                    }
+                }
+            }
     </div>
 </div>
