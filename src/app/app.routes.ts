@@ -3,12 +3,17 @@ import { OrderListComponent } from './business/orders/feature/order-list/order-l
 import { LoginComponent } from './auth/login/login.component';
 import { DashboardComponent } from './business/dashboard/dashboard.component';
 import { LayoutComponent } from './shared/layout/layout.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
     /*{
         path:"auth",
         // loadChildren : () => import('./app.component'),
     },*/
+    {
+        path:'',
+        component : HomeComponent
+    },
     {
         path : 'auth',
         component: LoginComponent

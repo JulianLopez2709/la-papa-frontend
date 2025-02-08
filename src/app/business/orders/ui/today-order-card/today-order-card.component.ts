@@ -8,17 +8,19 @@ import { Food } from '../../../../model/food';
   template: `
     <div class="container">
       <div>
-      <p>#{{food.id}}
+      <p>#{{food.food_id}}
       </p>
         <div class="img"></div>
       </div>
       <div>
         <p style="">
-          {{food.title}}
+          {{food.name}}
         </p>
       </div>
-      <div class="price">
-        <p>{{food.price}}</p>
+      <div style="display:flex; justify-content: center;  align-items: end;">
+        <div  class="price">
+          <p>{{food.price}}</p>
+        </div>
       </div>
     </div>
   `,

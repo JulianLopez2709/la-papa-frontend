@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { OrderService } from '../../data-access/order.service';
 import { NewOrderCardComponent } from '../../ui/new-order-card/new-order-card.component';
 import { TodayOrderCardComponent } from '../../ui/today-order-card/today-order-card.component';
 import { Food } from '../../../../model/food';
-import { Observable } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { WebSocketService } from '../../../../services/websocket/web-socket.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-order-list',
@@ -15,6 +16,54 @@ import { WebSocketService } from '../../../../services/websocket/web-socket.serv
   styleUrl: './order-list.component.css'
 })
 export class OrderListComponent implements OnInit {
+
+  textEmpty = ""
+  foods: any[] = [];
+
+  public foodList$ !: Observable<Food[]>
+
+
+  message = []
+  constructor(private service: OrderService, private socket: WebSocketService) { }
+
+  ngOnInit(): void {
+    this.socket.test().subscribe((message)=> {
+      console.log(message)
+    });
+
+    this.socket.loadFood().subscribe(message => {
+      console.log(message)
+    })
+
+    this.foodList$ = this.service.getOrder()
+
+
+    /*this.socket.loadFood().subscribe({
+      next(value) {
+        console.log(value)
+      },
+      error(err) {
+        console.log(err)
+      },
+    })*/
+
+    //this.socket.loadFood()
+
+    /*this.service.getAllData().subscribe(
+      (response) => {
+        console.log('Datos recibidos:', response); // Verifica los datos
+        this.FoodList = response;
+      },
+      (error) => {
+        console.error('Error al obtener datos:', error);
+      }
+    );*/
+  }
+
+}
+
+
+/*
   data: Food[] = [
     {
       "id": 112,
@@ -26,23 +75,4 @@ export class OrderListComponent implements OnInit {
       "duration": "82",
     }
   ]
-
-  public foodList$ !: Observable<Food[]>
-
-  constructor(private service: OrderService) { }
-
-  ngOnInit(): void {
-    this.foodList$ = this.service.getAllData()
-    console.log(this.foodList$)
-
-    /*his.service.getAllData().subscribe(
-      (response) => {
-        console.log('Datos recibidos:', response); // Verifica los datos
-        this.FoodList = response;
-      },
-      (error) => {
-        console.error('Error al obtener datos:', error);
-      }
-    );*/
-  }
-}
+*/

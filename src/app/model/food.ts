@@ -1,9 +1,8 @@
 export interface Food {
-    "id": number
+    "food_id": number
     "description":string,
     "price": number,
-    "title": string,
-    "isprocess": boolean,
-    "table": string,
-    "duration": string,
+    "name": string,
+    "type":string,
+    "available":boolean
 }

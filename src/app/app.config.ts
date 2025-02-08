@@ -9,8 +9,8 @@ import { SocketIoConfig, Socket } from 'ngx-socket-io';
 const socketConfig: SocketIoConfig = {
   url: 'http://localhost:3000', // Ajusta según tu backend
   options: {
-    transports: ['websocket', 'polling'],
-    autoConnect: true,
+    //transports: ['websocket', 'polling'],
+    //autoConnect: true,
   },
 };
 
@@ -20,6 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
-    { provide: Socket, useFactory: () => new Socket(socketConfig) }
+    //{ provide: Socket, useFactory: () => new Socket(socketConfig) }
   ]
 };

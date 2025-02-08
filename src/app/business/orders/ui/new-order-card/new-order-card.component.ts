@@ -9,7 +9,7 @@ import { Food } from '../../../../model/food';
     <div class="container ">
     <div class="" style="display:flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
         <div>
-            <p style="font-weight: 700;">Order #{{food.id}}</p>
+            <p style="font-weight: 700;">Order #{{food.food_id}}</p>
             <p>01 Ene 2025, 08:23 AM </p>
         </div>
         <div class="avatar-user"></div>
@@ -19,11 +19,11 @@ import { Food } from '../../../../model/food';
     <div class="detail-food">
         <div class="img-food"></div>
         <div style="max-width: 950px;">
-          <p style="font-weight: 700;">{{food.title}}</p>
+          <p style="font-weight: 700;">{{food.name}}</p>
           <p style="margin-bottom:7px;">{{food.description}}</p>
           <div class="" style="display:flex; justify-content: space-between; align-items: center;">
             <p>{{food.price}}</p>
-            <p>{{food.duration}}</p>
+            <p>duracion</p>
         </div>
         </div>
     </div>
